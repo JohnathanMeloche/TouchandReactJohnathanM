@@ -14,88 +14,67 @@ local backgroundImage = display.newImageRect("Images/background.jpg", 1920, 1920
 	backgroundImage.x = display.contentWidth/2
 	backgroundImage.y = display.contentWidth/2
 
+--background rectangle image
+local backgroundrect = display.newImageRect("Images/rectblue.jpg", 1950, 600)
+	
+	--properties of backgroundrect
+	backgroundrect.x = display.contentWidth/2
+	backgroundrect.y = 1170
+	backgroundrect.strokeWidth = 30
+	backgroundrect:setStrokeColor(1, .5, 0)
 
-local linkchar = display.newImageRect("Images/linkchar.png", 860, 750)
-	linkchar.x = display.contentWidth/2
-	linkchar.y = display.contentHeight/2
+
+-- creates variable and sets properties for Red Button
+local redbutton = display.newImageRect("Images/Redbutton.png", 400, 200)
+	redbutton.x = display.contentWidth/2
+	redbutton.y = 1140
+	redbutton.isVisible = true
 
 
-local shirt = display.newImageRect("Images/shirt.png", 300, 200)
-local shirtWidth = shirt.width
-local shirtHeight = shirt.height
+-- creates variable and sets properties for Blue Button
+local bluebutton = display.newImageRect("Images/Bluebutton.png", 400, 200)
+	bluebutton.x = display.contentWidth/2
+	bluebutton.y = 1140
+	bluebutton.isVisible = false
 
--- variables to keep track of which object I touched first
-local alreadyTouchedshirt = false
+-- text that shows when redbutton has been clicked or touched
+local clicktext = display.newText("Clicked!", 500, 500, "Images/vinet.ttf", 140)
+	clicktext.isVisible = false
+	clicktext:setFillColor(1, 0.2, 0)
 
--- sets x and y for shirt
-shirt.x = -100
-shirt.y = 800
 
-local function shirtListener(touch)
+-- function for blue button to change when touched
+local function Bluebuttonclick(touch)
 
 	if (touch.phase == "began") then
-		if (alreadyTouchedpants == false) then
-			alreadyTouchedshirt = true	
-
-		end
-
+		bluebutton.isVisible = true
+		redbutton.isVisible = false
+		clicktext.isVisible = true
 	end
-
-	if  ( (touch.phase == "moved") and (alreadyTouchedshirt == true) ) then
-		shirt.x = touch.x 
-		shirt.y = touch.y
-
-	end
-
+	
 	if (touch.phase == "ended") then
-		alreadyTouchedshirt = false	
-		alreadyTouchedpants = false	
-
+		bluebutton.isVisible = false
+		redbutton.isVisible = true
+		clicktext.isVisible = false
 	end
 
 end
 
--- listener for shirt object
-shirt:addEventListener("touch", shirtListener)
-
-
-local pants = display.newImageRect("Images/pants.png", 300, 300)
-local pantsWidth = pants.width
-local pantsHeight = pants.height
-
--- variables to keep track of which object I touched first
-local alreadyTouchedpants = false
-
--- sets x and y for pants
-pants.x = 1000
-pants.y = 800
-
-local function pantsListener(touch)
-
-	if (touch.phase == "began") then
-		if (alreadyTouchedshirt == false) then
-			alreadyTouchedpants = true	
-
-		end
-
-	end
-
-	if  ( (touch.phase == "moved") and (alreadyTouchedpants == true) ) then
-		pants.x = touch.x 
-		pants.y = touch.y
-
-	end
+-- function for red button to change when touched
+local function Redbuttonclick(touch)
 
 	if (touch.phase == "ended") then
-		alreadyTouchedpants = false	
-		alreadyTouchedshirt = false	
-
+		bluebutton.isVisible = false
+		redbutton.isVisible = true
+		clicktext.isVisible = false
 	end
 
 end
 
--- listener for pants object
-pants:addEventListener("touch", pantsListener)
+-- even listeners for the respective functions
+bluebutton:addEventListener("touch", Bluebuttonclick)
+redbutton:addEventListener("touch", Redbuttonclick)
 
-local commandtext = display.newText ("Dress Link up!", display.contentWidth/2, 200, "Images/vinet.ttf", 140)
-	commandtext:setFillColor (1, 0.2, 0)
+
+
+
