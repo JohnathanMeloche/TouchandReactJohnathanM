@@ -44,14 +44,14 @@ local clicktext = display.newText("Clicked!", 500, 500, "Images/vinet.ttf", 140)
 
 
 -- function for blue button to change when touched
-local function Bluebuttonclick(touch)
+local function Redbuttonclick(touch)
 
 	if (touch.phase == "began") then
 		bluebutton.isVisible = true
 		redbutton.isVisible = false
 		clicktext.isVisible = true
 	end
-	
+
 	if (touch.phase == "ended") then
 		bluebutton.isVisible = false
 		redbutton.isVisible = true
@@ -61,7 +61,7 @@ local function Bluebuttonclick(touch)
 end
 
 -- function for red button to change when touched
-local function Redbuttonclick(touch)
+local function Bluebuttonclick(touch)
 
 	if (touch.phase == "ended") then
 		bluebutton.isVisible = false
@@ -74,7 +74,4 @@ end
 -- even listeners for the respective functions
 bluebutton:addEventListener("touch", Bluebuttonclick)
 redbutton:addEventListener("touch", Redbuttonclick)
-
-
-
 
