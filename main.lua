@@ -30,6 +30,44 @@ local redbutton = display.newImageRect("Images/Redbutton.png", 400, 200)
 	redbutton.y = 1140
 	redbutton.isVisible = true
 
+-- Table of emitter parameters
+local emitterParams = {
+    startColorAlpha = 1,
+    startParticleSizeVariance = 53.47,
+    startColorGreen = 0.3031555,
+    yCoordFlipped = -1,
+    blendFuncSource = 770,
+    rotatePerSecondVariance = 153.95,
+    particleLifespan = 0.7237,
+    tangentialAcceleration = -144.74,
+    finishColorBlue = 0,
+    finishColorGreen = 0,
+    blendFuncDestination = 1,
+    startParticleSize = 80,
+    startColorRed = 1,
+    textureFileName = "Images/fire.png",
+    startColorVarianceAlpha = 1,
+    maxParticles = 256,
+    finishParticleSize = 700,
+    duration = -1,
+    finishColorRed = 1,
+    maxRadiusVariance = 72.63,
+    finishParticleSizeVariance = 64,
+    gravityy = -671.05,
+    speedVariance = 90.79,
+    tangentialAccelVariance = -92.11,
+    angleVariance = -142.62,
+    angle = -244.11
+}
+ 
+-- Create the emitter
+local emitter = display.newEmitter(emitterParams)
+ 
+-- Center the emitter within the content area
+emitter.x = display.contentWidth/2
+emitter.y = 1200
+emitter.isVisible = false
+
 
 -- creates variable and sets properties for Blue Button
 local bluebutton = display.newImageRect("Images/Bluebutton.png", 400, 200)
@@ -50,12 +88,14 @@ local function Redbuttonclick(touch)
 		bluebutton.isVisible = true
 		redbutton.isVisible = false
 		clicktext.isVisible = true
+		emitter.isVisible = true
 	end
 
 	if (touch.phase == "ended") then
 		bluebutton.isVisible = false
 		redbutton.isVisible = true
 		clicktext.isVisible = false
+		emitter.isVisible = false
 	end
 
 end
@@ -67,6 +107,7 @@ local function Bluebuttonclick(touch)
 		bluebutton.isVisible = false
 		redbutton.isVisible = true
 		clicktext.isVisible = false
+		emitter.isVisible = false
 	end
 
 end
