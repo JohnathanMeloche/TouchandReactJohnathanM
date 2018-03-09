@@ -30,8 +30,8 @@ local redbutton = display.newImageRect("Images/Redbutton.png", 400, 200)
 	redbutton.y = 1140
 	redbutton.isVisible = true
 
--- Table of emitter parameters
-local emitterParams = {
+-- sets emitter parameters
+local emitterparams = {
     startColorAlpha = 1,
     startParticleSizeVariance = 53.47,
     startColorGreen = 0.3031555,
@@ -61,7 +61,7 @@ local emitterParams = {
 }
  
 -- Create the emitter
-local emitter = display.newEmitter(emitterParams)
+local emitter = display.newEmitter(emitterparams)
  
 -- Center the emitter within the content area
 emitter.x = display.contentWidth/2
