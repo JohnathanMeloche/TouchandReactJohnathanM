@@ -7,6 +7,8 @@
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
+local Ting = audio.loadSound("sounds/ting.mp3")
+
 --background image
 local backgroundImage = display.newImageRect("Images/background.jpg", 1920, 1920)
 
@@ -116,3 +118,6 @@ end
 bluebutton:addEventListener("touch", Bluebuttonclick)
 redbutton:addEventListener("touch", Redbuttonclick)
 
+local backgroundMusic = audio.loadSound ("Sounds/Party.mp3")
+
+audio.play (backgroundMusic)
