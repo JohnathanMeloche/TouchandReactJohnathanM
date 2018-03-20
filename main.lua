@@ -7,7 +7,24 @@
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
-local Ting = audio.loadSound("sounds/ting.mp3")
+local Ting = audio.loadSound("Sounds/ding.mp3")
+local playTing
+local optionsTing = 
+{
+	channel = 1
+}
+audio.setVolume ( 1, optionsTing)
+
+local backgroundMusic = audio.loadSound ("Sounds/Party.mp3")
+local backgroundMusicChannel
+local optionsbackgroundMusic =
+{
+	channel = 2
+}
+audio.setVolume ( 0.01, optionsbackgroundMusic)
+	backgroundMusicChannel = audio.play (backgroundMusic)
+
+
 
 --background image
 local backgroundImage = display.newImageRect("Images/background.jpg", 1920, 1920)
@@ -91,6 +108,7 @@ local function Redbuttonclick(touch)
 		redbutton.isVisible = false
 		clicktext.isVisible = true
 		emitter.isVisible = true
+		playTing = audio.play (Ting)
 	end
 
 	if (touch.phase == "ended") then
@@ -117,7 +135,3 @@ end
 -- even listeners for the respective functions
 bluebutton:addEventListener("touch", Bluebuttonclick)
 redbutton:addEventListener("touch", Redbuttonclick)
-
-local backgroundMusic = audio.loadSound ("Sounds/Party.mp3")
-
-audio.play (backgroundMusic)
